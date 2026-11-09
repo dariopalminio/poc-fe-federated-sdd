@@ -26,7 +26,7 @@ Inicializar una aplicación React de una sola página que consulte el contrato B
 
 **Performance Goals**: No se requieren objetivos adicionales para esta página en la spec padre.
 
-**Constraints**: Limitarse a `FR-004` y `FR-005`; consumir el contrato Backend `health-api` en `44ff3c4576062262370b4f7798b24e1eddc2abde`; no añadir autenticación ni una copia autoritativa local del OpenAPI.
+**Constraints**: Limitarse a `FR-004` y `FR-005`; consumir el contrato Backend `health-api` en `44ff3c4576062262370b4f7798b24e1eddc2abde`; no añadir autenticación ni una copia autoritativa local del OpenAPI. Usar `/health` same-origin; en desarrollo, Vite lo proxifica a `http://localhost:3000` o al destino configurado por `HEALTH_API_PROXY_TARGET`.
 
 **Scale/Scope**: Una página, un endpoint y una consulta al montar; sin polling, reintentos, almacenamiento ni gestión global de estado.
 
@@ -89,7 +89,7 @@ src/
 └── test/setup.ts
 ```
 
-**Decisión de estructura**: SPA pequeña con una página y un módulo de consumo local al feature. Vite compila la aplicación; Vitest y React Testing Library verifican el comportamiento del componente. Esta estructura y sus herramientas son decisiones del plan, no capacidades ya instaladas.
+**Decisión de estructura**: SPA pequeña con una página y un módulo de consumo local al feature. Vite compila la aplicación y proxifica `/health` al Backend local para evitar depender de CORS; Vitest y React Testing Library verifican el comportamiento del componente. Esta estructura y sus herramientas son decisiones del plan.
 
 ## Complexity Tracking
 

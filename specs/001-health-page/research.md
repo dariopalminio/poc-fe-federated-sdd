@@ -30,11 +30,11 @@
 
 ### Health Request
 
-**Decision**: Use native `fetch` for one `GET /health` request when the page mounts. Read the base URL from `VITE_HEALTH_API_BASE_URL`, defaulting to same-origin `/health`. Do not add authentication, polling, retries, or a third-party query library. Abort an in-flight request when the page unmounts.
+**Decision**: Use native `fetch` for one same-origin `GET /health` request when the page mounts. In development, configure Vite to proxy `/health` to `http://localhost:3000` by default; allow `HEALTH_API_PROXY_TARGET` to override the proxy target. Production hosting must route `/health` to the Backend on the same origin. Do not add authentication, polling, retries, or a third-party query library. Abort an in-flight request when the page unmounts.
 
-**Rationale**: The contract requires no security and exposes a single GET operation. Native fetch is sufficient and avoids adding an HTTP dependency. The contract does not define a deployment host, so the optional base URL makes the origin configurable without hardcoding the Backend address.
+**Rationale**: The contract requires no security and exposes a single GET operation. The Backend listens on port 3000 by default and does not register CORS; a development proxy avoids a cross-origin browser request without changing the Backend-owned contract or implementation. Native fetch avoids an additional HTTP dependency.
 
-**Alternatives considered**: A fixed localhost URL is environment-specific. Axios or a query/cache library adds dependencies for behavior not required by the spec. Polling and retries would add user-visible semantics not requested.
+**Alternatives considered**: Calling `http://localhost:3000/health` directly from the Vite origin would require Backend CORS support, which is not configured and is outside this repository's scope. Axios or a query/cache library adds dependencies for behavior not required by the spec. Polling and retries would add user-visible semantics not requested.
 
 ### Response Validation And UI States
 

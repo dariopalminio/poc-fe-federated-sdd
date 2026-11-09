@@ -22,10 +22,10 @@ description: "Tareas para implementar la página de estado de salud"
 
 **Propósito**: Inicializar la SPA React con herramientas y scripts fijados por lockfile.
 
-- [ ] T001 [P] Crear `package.json` con Node.js `>=26`, React, React DOM, TypeScript, Vite, Vitest, jsdom, React Testing Library y scripts `dev`, `build` y `test`; generar `package-lock.json` con las versiones resueltas.
-- [ ] T002 [P] Configurar TypeScript estricto para React en `tsconfig.json`.
-- [ ] T003 [P] Crear `index.html` con el elemento raíz de la SPA.
-- [ ] T004 [P] Configurar Vite y Vitest, entorno jsdom y el archivo de preparación en `vite.config.ts`.
+- [X] T001 [P] Crear `package.json` con Node.js `>=26`, React, React DOM, TypeScript, Vite, Vitest, jsdom, React Testing Library y scripts `dev`, `build` y `test`; generar `package-lock.json` con las versiones resueltas.
+- [X] T002 [P] Configurar TypeScript estricto para React en `tsconfig.json`.
+- [X] T003 [P] Crear `index.html` con el elemento raíz de la SPA.
+- [X] T004 [P] Configurar Vite y Vitest, entorno jsdom y el archivo de preparación en `vite.config.ts`.
 
 ---
 
@@ -33,9 +33,9 @@ description: "Tareas para implementar la página de estado de salud"
 
 **Propósito**: Preparar el montaje React y la infraestructura de pruebas antes del comportamiento de la historia.
 
-- [ ] T005 [P] Configurar los matchers de React Testing Library en `src/test/setup.ts`.
-- [ ] T006 [P] Crear el punto de entrada y la aplicación base en `src/main.tsx` y `src/App.tsx`.
-- [ ] T007 Verificar que la SPA base compila mediante `npm run build` definido en `package.json`.
+- [X] T005 [P] Configurar los matchers de React Testing Library en `src/test/setup.ts`.
+- [X] T006 [P] Crear el punto de entrada y la aplicación base en `src/main.tsx` y `src/App.tsx`.
+- [X] T007 Verificar que la SPA base compila mediante `npm run build` definido en `package.json`.
 
 **Checkpoint**: El scaffold compila y la configuración de pruebas está lista; aún no existe comportamiento de estado de salud.
 
@@ -49,13 +49,13 @@ description: "Tareas para implementar la página de estado de salud"
 
 ### Tests for User Story 1
 
-- [ ] T008 [US1] Escribir en `src/features/health/HealthPage.test.tsx` pruebas de carga, éxito, error HTTP, error de red, JSON inválido y cuerpo sin `status: "ok"`; añadir en `src/features/health/HealthPage.tsx` solo un componente mínimo para que las pruebas ejecuten y fallen por las aserciones de comportamiento antes de implementar la solución.
+- [X] T008 [US1] Escribir en `src/features/health/HealthPage.test.tsx` pruebas de carga, éxito, error HTTP, error de red, JSON inválido y cuerpo sin `status: "ok"`; añadir en `src/features/health/HealthPage.tsx` solo un componente mínimo para que las pruebas ejecuten y fallen por las aserciones de comportamiento antes de implementar la solución.
 
 ### Implementation for User Story 1
 
-- [ ] T009 [P] [US1] Implementar `fetchHealthStatus(signal?: AbortSignal): Promise<"ok">` en `src/features/health/healthApi.ts`; consultar la URL configurada por `VITE_HEALTH_API_BASE_URL` o `/health`, exigir respuesta HTTP satisfactoria y validar `status === "ok"` sin copiar el esquema OpenAPI.
-- [ ] T010 [P] [US1] Implementar en `src/features/health/HealthPage.tsx` los estados de carga, éxito y error usando `fetchHealthStatus`; cancelar la petición al desmontar y no mostrar un estado saludable en carga o error.
-- [ ] T011 [US1] Integrar `HealthPage` en `src/App.tsx` y renderizarla desde `src/main.tsx`.
+- [X] T009 [P] [US1] Implementar `fetchHealthStatus(signal?: AbortSignal): Promise<"ok">` en `src/features/health/healthApi.ts`; consultar `/health`, exigir respuesta HTTP satisfactoria y validar el cuerpo exacto del contrato sin copiar el esquema OpenAPI.
+- [X] T010 [P] [US1] Implementar en `src/features/health/HealthPage.tsx` los estados de carga, éxito y error usando `fetchHealthStatus`; cancelar la petición al desmontar y no mostrar un estado saludable en carga o error.
+- [X] T011 [US1] Integrar `HealthPage` en `src/App.tsx` y renderizarla desde `src/main.tsx`.
 
 **Checkpoint**: La historia local funciona de forma independiente y satisface `FR-004`, `FR-005`, `SC-002` y `SC-003`.
 
@@ -65,8 +65,8 @@ description: "Tareas para implementar la página de estado de salud"
 
 **Propósito**: Actualizar la guía de validación y comprobar el incremento completo.
 
-- [ ] T012 Actualizar `specs/001-health-page/quickstart.md` con los scripts ya configurados, la resolución de `VITE_HEALTH_API_BASE_URL` y los resultados esperados por estado.
-- [ ] T013 Ejecutar `npm run test -- --run` y `npm run build` desde `package.json`, resolver fallos y registrar en `specs/001-health-page/quickstart.md` los resultados observados.
+- [X] T012 Actualizar `specs/001-health-page/quickstart.md` con los scripts ya configurados, el proxy same-origin `/health` y los resultados esperados por estado.
+- [X] T013 Ejecutar `npm run test -- --run` y `npm run build` desde `package.json`, resolver fallos y registrar en `specs/001-health-page/quickstart.md` los resultados observados.
 
 ---
 

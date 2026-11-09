@@ -1,26 +1,49 @@
 # Quickstart: Health Page
 
-## Current Repository State
+## Prerequisites
 
-The Frontend repository does not yet contain `package.json`, application source, or a test runner. The commands below are the planned interface to add during the application bootstrap; they are not currently runnable or verified.
+- Node.js `>=26` and npm.
+- The Backend checkout beside this repository at `../poc-be-federated-sdd`.
 
-## Planned Validation
+## Start the Backend
 
-After the scaffold and scripts are added:
+From the Frontend repository root, build and start the Backend using its declared npm scripts:
 
-1. Install the locked dependencies with `npm ci`.
-2. Run the component suite with `npm run test -- --run`.
-3. Build the production bundle with `npm run build`.
-4. Start the development server with `npm run dev` and open the page in a browser.
+```powershell
+npm --prefix ..\poc-be-federated-sdd run build
+npm --prefix ..\poc-be-federated-sdd start
+```
 
-The planned package scripts are `test` (Vitest), `build` (TypeScript check and Vite build), and `dev` (Vite development server). They must be added to `package.json` before these commands are treated as available.
+The Backend listens on port `3000` by default. Keep this terminal running.
+
+## Start the Frontend
+
+In a second terminal from the Frontend repository root:
+
+```powershell
+npm ci
+npm run dev
+```
+
+Vite proxies same-origin `/health` requests to `http://localhost:3000`. To use another Backend origin, set `HEALTH_API_PROXY_TARGET` before starting Vite. Production hosting must route `/health` to the Backend on the same origin.
+
+## Automated Validation
+
+```powershell
+npm run test -- --run
+npm run build
+```
 
 ## Scenarios
 
-- With the Backend reachable at the same origin, load the page and verify that it requests `GET /health` and displays `ok` only after a valid successful response.
-- Configure `VITE_HEALTH_API_BASE_URL` when the Backend is served from a different origin; verify the request uses that base URL.
-- Hold the request pending and verify the page does not display a healthy status.
-- Return a non-success HTTP response, invalid JSON, or a body other than `{ "status": "ok" }`; verify the page shows an unavailable state and never shows `ok` as current.
-- In the component unit test, mock each response outcome and assert the corresponding visible state.
+- With the Backend running, opening the page triggers `GET /health` and displays `ok` only after a valid successful response.
+- While the request is pending, the page displays a pending indication and does not show a healthy state.
+- If the Backend returns a non-success response, the network fails, JSON is invalid, or the body does not exactly match the contract, the page displays an unavailable indication and does not show `ok`.
+- Component tests mock `fetch` and cover pending, success, HTTP/network failure, invalid JSON, an unexpected status, and additional response properties.
 
-No Frontend build or test command has been executed in this plan phase.
+## Results (2026-11-09)
+
+- `npm run test -- --run`: 7 tests passed.
+- `npm run build`: TypeScript check passed; Vite built 17 modules.
+- `GET /` through Vite returned HTTP 200.
+- Proxied `GET /health` returned HTTP 200 with `status: "ok"` from the Backend.
