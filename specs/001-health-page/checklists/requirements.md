@@ -33,4 +33,5 @@
 
 - The parent manifest assigns this repository the `frontend-health` role, local path `specs/001-health-page/spec.md`, and scope `FR-004`/`FR-005`; the child spec and origin metadata match that assignment.
 - The source revision is pinned to the full Hub commit SHA that contains both the parent spec and manifest.
-- `shared_contracts` is empty in the parent manifest. The exact OpenAPI contract revision is therefore not verified or claimed by this checklist.
+- The parent manifest pins `health-api` to the Backend-owned contract path `specs/001-health-endpoint/contracts/openapi.json` at revision `44ff3c4576062262370b4f7798b24e1eddc2abde`; that exact artifact was resolved in the Backend repository.
+- The parent spec still contains a time-bound assumption that contract revision was pending; the newer manifest now supplies that revision. The Hub should reconcile this stale note in a later source update.

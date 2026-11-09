@@ -1,7 +1,7 @@
 epic_id: 001-health-status
 hub_repo: https://github.com/dariopalminio/poc-cross-hub-federated-sdd
 spec_source: specs/001-health-status/spec.md
-source_revision: 0acce2cffe4fb456a411b678d48cf3506cf98b3b
+source_revision: a1c8a5a8b45c4a12d3a15541e3c2a559bb4802e9
 role: frontend-health
 requirements:
   - FR-004

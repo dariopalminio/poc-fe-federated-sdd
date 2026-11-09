@@ -51,5 +51,5 @@ Como usuario de la aplicación, quiero ver el estado recibido del servicio para 
 ## Assumptions
 
 - Esta contribución cubre únicamente los requisitos centrales **FR-004** y **FR-005**, asignados al rol `frontend-health`; los requisitos del endpoint y del contrato canónico quedan fuera de esta spec hija.
-- El Backend proporciona el servicio de salud y es el propietario del contrato compartido. El manifiesto de origen declara `shared_contracts: []`, por lo que esta derivación no fija una revisión del contrato ni afirma alineación contractual.
+- El Backend proporciona el servicio de salud y es el propietario del contrato compartido `health-api`, ubicado en `specs/001-health-endpoint/contracts/openapi.json` y fijado en la revisión `44ff3c4576062262370b4f7798b24e1eddc2abde`. El Frontend consume esa revisión sin mantener una definición autoritativa independiente.
 - La página forma parte de la aplicación Frontend y presenta el estado a sus usuarios; esta spec no prescribe detalles de presentación.
