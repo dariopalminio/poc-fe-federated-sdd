@@ -6,7 +6,7 @@
 
 **Status**: Draft
 
-**Input**: User description: "Inicialización y derivación trazable de la spec hija desde la spec padre specs\001-health-status. Abarca preparar el repositorio, fijar la revisión de la iniciativa, crear origin.yaml, derivar la spec local y validar su correspondencia con el manifiesto padre."
+**Input**: User description: "Inicialización y derivación trazable de la spec hija desde la spec padre specs\001-health-status. Abarca preparar el repositorio, fijar la revisión de la iniciativa, crear spec-origin.yaml, derivar la spec local y validar su correspondencia con el manifiesto padre."
 
 ## User Scenarios & Testing *(mandatory)*
 

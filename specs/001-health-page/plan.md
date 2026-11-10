@@ -37,7 +37,7 @@ Inicializar una aplicación React de una sola página que consulte el contrato B
 | Principio | Resultado | Evidencia |
 |-----------|-----------|-----------|
 | I. Alcance federado y autoridad | PASS | La spec local se limita al alcance Frontend `FR-004`/`FR-005` del manifiesto fijado. |
-| II. Trazabilidad inmutable | PASS | `origin.yaml` fija el commit Hub `a1c8a5a8b45c4a12d3a15541e3c2a559bb4802e9`, que contiene spec y manifiesto; ambos requisitos coinciden con el alcance declarado. |
+| II. Trazabilidad inmutable | PASS | `spec-origin.yaml` fija el commit Hub `a1c8a5a8b45c4a12d3a15541e3c2a559bb4802e9`, que contiene spec y manifiesto; ambos requisitos coinciden con el alcance declarado. |
 | III. Propiedad del contrato API | PASS | El manifiesto fija `health-api` en el repositorio Backend y en el commit `44ff3c4576062262370b4f7798b24e1eddc2abde`; el archivo resuelve y define `GET /health`. |
 | IV. Responsabilidad local | PASS | El Frontend consume el contrato; no cambia el Hub ni mantiene una definición autoritativa alternativa. |
 | V. Verificación basada en evidencia | PASS para el diseño | Se verificaron los SHA, las rutas, el rol, el alcance y la respuesta OpenAPI. Las pruebas de la página quedan pendientes de implementación. |
@@ -62,7 +62,7 @@ Las decisiones, alternativas y evidencia se registran en [research.md](research.
 ```text
 specs/001-health-page/
 ├── spec.md
-├── origin.yaml
+├── spec-origin.yaml
 ├── plan.md
 ├── research.md
 ├── data-model.md

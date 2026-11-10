@@ -45,8 +45,8 @@ Hub (repositorio transversal): https://github.com/dariopalminio/poc-cross-hub-fe
 ## Reglas de federación
 
 - Consulta [AGENTS.template.md](AGENTS.template.md) para conocer el contrato completo de federación, los roles de los repositorios y los requisitos de entrega.
-- Antes de derivar o modificar una especificación local de una funcionalidad, localiza la especificación principal y `links-manifest.yaml` en el mismo commit inmutable del Hub. Usa esa entrada del manifiesto para verificar el rol de este repositorio, la ruta de la especificación local y el alcance de los requisitos.
-- Mantén `origin.yaml` junto a la especificación local y fija el SHA completo del commit de origen. Si no se pueden verificar la revisión principal, el alcance o el contrato compartido, detente e informa del bloqueo; no hagas suposiciones ni afirmes que existe alineación.
+- Antes de derivar o modificar una especificación local de una funcionalidad, localiza la especificación principal y `parent-spec-manifest.yaml` en el mismo commit inmutable del Hub. Usa esa entrada del manifiesto para verificar el rol de este repositorio, la ruta de la especificación local y el alcance de los requisitos.
+- Mantén `spec-origin.yaml` junto a la especificación local y fija el SHA completo del commit de origen. Si no se pueden verificar la revisión principal, el alcance o el contrato compartido, detente e informa del bloqueo; no hagas suposiciones ni afirmes que existe alineación.
 - Este repositorio consume el contrato OpenAPI; el Backend es su propietario canónico. Los consumidores deben usar la revisión inmutable exacta que declara el manifiesto principal.
 
 ### Contratos OpenAPI y rutas canónicas
@@ -55,7 +55,7 @@ Hub (repositorio transversal): https://github.com/dariopalminio/poc-cross-hub-fe
 - El plan de una funcionalidad que use o cambie un contrato MUST identificar y verificar su propietario, ruta canónica y cambios previstos contra el manifiesto y la revisión inmutable de origen.
 - La implementación que actualice o genere un contrato MUST hacerlo directamente en la ruta canónica del repositorio propietario y validar que el artefacto resultante coincide con el servicio que lo implementa.
 - Antes de que otro repositorio consuma un contrato, el Hub MUST registrar en `shared_contracts` su identificador, propietario, ruta y revisión inmutable completa.
-- Un cambio de ruta es transversal y MUST coordinarse primero con el Hub. No elijas ni uses una ruta nueva localmente antes de que el Hub la declare. Tras acordarla, el propietario mueve o genera el contrato en esa ruta y publica su commit; después el Hub actualiza `shared_contracts` con la ruta y el SHA de ese commit. Finalmente, cada consumidor actualiza `origin.yaml` para fijar el nuevo SHA completo del commit del Hub. Hasta completar esa secuencia, no declares alineación con la nueva ruta o revisión.
+- Un cambio de ruta es transversal y MUST coordinarse primero con el Hub. No elijas ni uses una ruta nueva localmente antes de que el Hub la declare. Tras acordarla, el propietario mueve o genera el contrato en esa ruta y publica su commit; después el Hub actualiza `shared_contracts` con la ruta y el SHA de ese commit. Finalmente, cada consumidor actualiza `spec-origin.yaml` para fijar el nuevo SHA completo del commit del Hub. Hasta completar esa secuencia, no declares alineación con la nueva ruta o revisión.
 
 ## Workflow de Spec Kit
 
